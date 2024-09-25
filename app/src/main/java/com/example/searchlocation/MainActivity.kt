@@ -1,15 +1,15 @@
 package com.example.searchlocation
 
-import SearchViewModel
+import com.example.searchlocation.viewmodel.SearchViewModel
 import android.content.Intent
 import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.example.searchlocation.databinding.ActivityMainBinding
@@ -47,8 +47,8 @@ class MainActivity : AppCompatActivity(), OnDirectionClicked {
                     searchAdapter.updateQuery("")
                 }else{
                     val query = s.toString()
-                    searchViewModel.onSearchQueryChanged(query.toString())
-                    searchAdapter.updateQuery(query.toString())
+                    searchViewModel.onSearchQueryChanged(query)
+                    searchAdapter.updateQuery(query)
                     startLoading()
                 }
             }
@@ -76,13 +76,13 @@ class MainActivity : AppCompatActivity(), OnDirectionClicked {
     }
 
     private fun stopLoading() {
-        activityMainBinding.outlinedTextField.startIconDrawable = getDrawable(R.drawable.baseline_search_24)
+        activityMainBinding.outlinedTextField.startIconDrawable = AppCompatResources.getDrawable(this,R.drawable.baseline_search_24)
     }
 
     private fun startLoading() {
         val drawable = CircularProgressDrawable(this)
-        drawable.setStyle(CircularProgressDrawable.DEFAULT);
-        drawable.setColorSchemeColors(Color.GREEN);
+        drawable.setStyle(CircularProgressDrawable.DEFAULT)
+        drawable.setColorSchemeColors(Color.GREEN)
         activityMainBinding.outlinedTextField.startIconDrawable = drawable
         drawable.start()
     }

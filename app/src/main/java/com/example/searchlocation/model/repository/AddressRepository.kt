@@ -1,7 +1,7 @@
 package com.example.searchlocation.model.repository
 
-import android.util.Log
 import com.example.searchlocation.model.entities.AddressResponse
+import com.example.searchlocation.model.network.API
 import retrofit2.Response
 
 class AddressRepository {

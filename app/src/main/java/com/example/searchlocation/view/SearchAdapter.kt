@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import com.example.searchlocation.model.entities.Item
 
-class SearchAdapter( private var query: String) :
+class SearchAdapter( query: String) :
     ListAdapter<Item,SearchAdapter.SearchViewHolder>(AddressItemDiffUtils()) {
 
     private var listener: OnDirectionClicked? = null
 
-    class SearchViewHolder(private val binding: SearchItemBinding) :
+    class SearchViewHolder(binding: SearchItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
         val directionBtn = binding.directionBtn
